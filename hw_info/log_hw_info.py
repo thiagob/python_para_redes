@@ -7,8 +7,8 @@ from datetime import datetime
 
 def log_hw_data():
     uname = platform.uname()
-    print(f"System: {uname.system}")
-    print(f"Total CPU Usage: {psutil.cpu_percent()}%")
+    print("System: " + uname.system)
+    print("Total CPU Usage: " + str(psutil.cpu_percent()))
 
     # Abre o arquivo
     file_object = open('hw_info.log', 'a')
