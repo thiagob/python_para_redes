@@ -1,7 +1,7 @@
 import psutil
 import platform
 
-import schedule
+#import schedule
 import time
 from datetime import datetime
 
@@ -24,10 +24,10 @@ def log_hw_data():
 log_hw_data()
 
 # depois executa o método a cada 10 segundos
-schedule.every(10).seconds.do(log_hw_data)
+#schedule.every(10).seconds.do(log_hw_data)
 
 
 # Mantém o programa execução, do contrário só executaria uma vez
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+#while True:
+#    schedule.run_pending()
+#    time.sleep(1)
