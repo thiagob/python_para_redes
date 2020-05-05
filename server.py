@@ -1,6 +1,5 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import urllib
-#import urlparse 
 import psutil
 
 HOST_ADDRESS = ""
@@ -18,13 +17,21 @@ class RequestHandler(BaseHTTPRequestHandler):
         self.end_headers()  
     
     def do_GET(self):
+        # START **********************************************************************
         """ response for a GET request """
-        parsed_path = self.path
         self.send_response(200)
-
-        html = "<html><body><p>" + str(psutil.cpu_percent()) + "</p></body></html>"
-        self.wfile.write(bytes(html, "utf-8"))
         
+        html = ""
+        if self.path == "/info":
+            html = "Pagina de informacoes"
+        else:
+            html = "<html><body><h1>CPU Percent</h1><p>" + str(psutil.cpu_percent()) + "</p></body></html>"
+        
+        #html = "{ \"cpu_consumption\": " + str(psutil.cpu_percent()) +  "}"
+        self.wfile.write(bytes(html, "utf-8"))
+        # END **********************************************************************
+
+
 def run(server_class=HTTPServer, handler_class=BaseHTTPRequestHandler):
     """ follows example shown on docs.python.org """
     server_address = (HOST_ADDRESS, HOST_PORT)
