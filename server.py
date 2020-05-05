@@ -25,7 +25,12 @@ class RequestHandler(BaseHTTPRequestHandler):
         if self.path == "/info":
             html = "Pagina de informacoes"
         else:
-            html = "<html><body><h1>CPU Percent</h1><p>" + str(psutil.cpu_percent()) + "</p></body></html>"
+            html = "<html>"
+            html += "<body>"
+            html += "<h1>CPU Percent</h1>"
+            html += "<p>" + str(psutil.cpu_percent()) + "</p>"
+            html += "</body>"
+            html += "</html>"
         
         #html = "{ \"cpu_consumption\": " + str(psutil.cpu_percent()) +  "}"
         self.wfile.write(bytes(html, "utf-8"))
