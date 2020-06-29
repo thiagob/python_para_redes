@@ -1,3 +1,4 @@
+# pip install pyzabbix
 
 from pyzabbix.api import ZabbixAPI
 
@@ -14,9 +15,9 @@ for host in hosts:
 
 # Create a new host
 # https://www.zabbix.com/documentation/2.4/manual/api/reference/host/create
-result2 = zapi.do_request('host.create',
+response = zapi.do_request('host.create',
     {
-        "host": "Linux server",
+        "host": "Linux server LIVE",
         "interfaces": [
             {
                 "type": 1,
@@ -35,3 +36,5 @@ result2 = zapi.do_request('host.create',
     }
 )
 
+print("New host created with ID: %s" % response['result']['hostids'])
+print("http://192.168.1.161/hosts.php?form=update&hostid=%s" % response['result']['hostids'])
