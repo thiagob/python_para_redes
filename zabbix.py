@@ -13,6 +13,7 @@ for host in hosts:
 
 
 # Create a new host
+# https://www.zabbix.com/documentation/2.4/manual/api/reference/host/create
 result2 = zapi.do_request('host.create',
     {
         "host": "Linux server",
